@@ -15,7 +15,19 @@ class downloadPhotos {
         $this->files_dir_path = $GLOBALS['path'];
     }
 
-    public function GetByApi($config) {
+    public function GetByApi($params) {
+
+
+        $allowed_params = array('page', 'category', 'sort', 'order', 'output', 'aucmaxprice');
+
+
+        foreach ($params as $key => $value) {
+
+            if (in_array($key, $allowed_params)) {
+
+                $config[$key] = $value;
+            }
+        }
 
 
         // default values
@@ -64,7 +76,7 @@ class downloadPhotos {
 
             if (file_exists($this->files_dir_path . $value['AuctionID'] . '.' . $extension)) {
 
-             continue;
+                continue;
             }
 
             file_put_contents($this->files_dir_path . $value['AuctionID'] . '.' . $extension, $content); //save photo 

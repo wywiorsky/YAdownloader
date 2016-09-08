@@ -18,20 +18,9 @@ public function __construct(){
  
 public function GetPhotos($params){ 
     
-    
-    $allowed_params = array('page','category','sort','order','output','aucmaxprice');
-    
-            
-   foreach($params as $key => $value){
-        
-     if(in_array($key,$allowed_params)){
-         
-         $config[$key] = $value;
-     }
-   }         
-            
+     
 
-    $data = $this->download->GetByApi($config);
+    $data = $this->download->GetByApi($params);
     
     if($data != false){
           
