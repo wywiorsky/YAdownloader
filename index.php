@@ -23,7 +23,8 @@ if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
 }
 
 $request = $request_a[1];
-$params = split("/", $request);
+$request = explode('?', $request);
+$params = split("/", $request[0]);
 
 
 
